@@ -13,7 +13,20 @@ def countPN(training, key, pv="yes", nv="no"):
   return pos, neg
 
 def Gain(S, A):
+  gain = 0
+  values = {}
   Spos, Sneg = countPN(S, masterkey)
   S_entropy = entropy(Spos, Sneg)
-  return S_entropy
 
+  for s in S:
+    value = s[A]
+    if value in values:
+      if s[masterkey] == "yes":
+        values[value][0] = values[value][0] + 1
+      elif s[masterkey] == "no":
+        values[value][1] = values[value][1] + 1
+    else:
+      values[value] = [0, 0]
+
+  #return S_entropy
+  return values
