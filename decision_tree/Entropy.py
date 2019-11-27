@@ -14,4 +14,3 @@ def binEntropy(p, n):
   neg = n / t
   entropy = -pos * log(pos) - neg * log(neg)
   return entropy
-

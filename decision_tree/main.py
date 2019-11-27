@@ -1,3 +1,4 @@
+from ID3 import id3
 from InfoGain import Gain
 from BuildFromTraining import loadFromFile
 
@@ -10,10 +11,10 @@ Attributes = list(S[0])
 ##################################################
 ###
 ##################################################
-print("Calculando ganancia de informacion...")
+#print("Calculando ganancia de informacion...")
 
-for A in Attributes[:-1]:
-  gain[A] = Gain(S, A)
+#for A in Attributes[:-1]:
+#  gain[A] = Gain(S, A)
 ##################################################
-#print("Atributos: {}".format(Attributes))
-#print("Ganancias: {}".format(gain))
+print("Atributos: {}".format(Attributes))
+id3(S, "", Attributes[:-1])

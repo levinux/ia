@@ -1,4 +1,7 @@
-# Archivo vacio por el momento MUAHAHAHAHA
+from InfoGain import Gain
+
+# Vars aqui...
+arbol = {}
 
 def ExamplesArePos(Examples):
   pass
@@ -6,7 +9,19 @@ def ExamplesArePos(Examples):
 def ExamplesAreNeg(Examples):
   pass
 
+def BestGainAttribute(S, Attrs):
+  bestA = ""
+  bestV = 0
+  for A in Attrs:
+    g = Gain(S, A)
+    if g > bestV:
+      bestV = g
+      bestA = A
+  Attrs.remove(bestA)
+  return {bestA: bestV}
+
 def id3(Examples, TargetA, Attributes):
+  A = {}
   Root = ""
   if ExamplesArePos(Examples): return (Root, "+")
   if ExamplesAreNeg(Examples): return (Root, "-")
@@ -14,4 +29,6 @@ def id3(Examples, TargetA, Attributes):
   ###
 
   ### Otherwise ###
-  pass
+  A = BestGainAttribute(Examples, Attributes)
+  print(A)
+  print(Attributes)
