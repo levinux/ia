@@ -18,7 +18,7 @@ def BestGainAttribute(S, Attrs):
       bestV = g
       bestA = A
   Attrs.remove(bestA)
-  return {bestA: bestV}
+  return (bestA, bestV)
 
 def id3(Examples, TargetA, Attributes):
   A = {}
@@ -30,5 +30,6 @@ def id3(Examples, TargetA, Attributes):
 
   ### Otherwise ###
   A = BestGainAttribute(Examples, Attributes)
-  print(A)
+  arbol[A[0]] = {}
+  print(arbol)
   print(Attributes)
